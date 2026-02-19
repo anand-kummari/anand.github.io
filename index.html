@@ -79,24 +79,37 @@ padding:0 20px;
 .about-body strong{color:#2d3748;font-weight:600}
 
 /* EXPERIENCE */
-#experience{background:white;position:relative}
-.experience-timeline{position:relative;max-width:1000px;margin:0 auto}
-.experience-item{position:relative;padding-left:60px;margin-bottom:50px}
+#experience{background:linear-gradient(135deg,#f5f7fa 0%,#e8eaf6 100%);position:relative;overflow:hidden}
+#experience::before{content:'';position:absolute;top:-50%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(102,126,234,0.1),transparent);border-radius:50%}
+#experience::after{content:'';position:absolute;bottom:-30%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(118,75,162,0.08),transparent);border-radius:50%}
+.experience-timeline{position:relative;max-width:1100px;margin:0 auto;z-index:1}
+.experience-item{position:relative;padding-left:80px;margin-bottom:60px;opacity:0;animation:fadeInUp 0.6s ease forwards}
+.experience-item:nth-child(1){animation-delay:0.1s}
+.experience-item:nth-child(2){animation-delay:0.2s}
+.experience-item:nth-child(3){animation-delay:0.3s}
+.experience-item:nth-child(4){animation-delay:0.4s}
 .experience-item:last-child{margin-bottom:0}
-.experience-dot{position:absolute;left:0;top:8px;width:40px;height:40px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(102,126,234,0.3);z-index:2}
-.experience-dot::after{content:'';position:absolute;width:16px;height:16px;background:white;border-radius:50%}
-.experience-line{position:absolute;left:19px;top:48px;bottom:-50px;width:2px;background:linear-gradient(to bottom,#667eea,#764ba2);opacity:0.3}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.experience-dot{position:absolute;left:0;top:12px;width:50px;height:50px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px rgba(102,126,234,0.4);z-index:2;transition:all 0.3s ease}
+.experience-dot::before{content:'💼';font-size:24px;position:absolute}
+.experience-dot::after{content:'';position:absolute;width:50px;height:50px;border:3px solid rgba(102,126,234,0.3);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.3);opacity:0}}
+.experience-item:hover .experience-dot{transform:scale(1.15) rotate(360deg)}
+.experience-line{position:absolute;left:24px;top:62px;bottom:-60px;width:3px;background:linear-gradient(to bottom,#667eea,#764ba2);opacity:0.2}
 .experience-item:last-child .experience-line{display:none}
-.experience-card{background:white;border-radius:20px;padding:28px 32px;box-shadow:0 10px 30px rgba(0,0,0,0.08);transition:all 0.3s ease;border-left:4px solid #667eea}
-.experience-card:hover{transform:translateX(8px);box-shadow:0 15px 40px rgba(102,126,234,0.2)}
-.experience-header{display:flex;justify-content:space-between;align-items:start;margin-bottom:12px;flex-wrap:wrap;gap:10px}
-.experience-title{font-size:1.35rem;font-weight:700;color:#2d3748;margin:0}
-.experience-company{font-size:1.1rem;font-weight:600;color:#667eea;margin-top:4px}
-.experience-date{font-size:0.95rem;color:#718096;font-weight:500;white-space:nowrap}
-.experience-achievements{margin-top:16px}
-.experience-achievements li{color:#4a5568;font-size:0.98rem;line-height:1.8;margin-bottom:10px;position:relative;padding-left:8px}
+.experience-card{background:white;border-radius:24px;padding:32px 36px;box-shadow:0 15px 35px rgba(0,0,0,0.1);transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);position:relative;overflow:hidden}
+.experience-card::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:linear-gradient(to bottom,#667eea,#764ba2)}
+.experience-card:hover{transform:translateY(-8px) translateX(5px);box-shadow:0 25px 50px rgba(102,126,234,0.25)}
+.experience-header{display:flex;justify-content:space-between;align-items:start;margin-bottom:16px;flex-wrap:wrap;gap:12px}
+.experience-header-left{display:flex;align-items:flex-start;gap:16px}
+.experience-logo{width:50px;height:50px;object-fit:contain;border-radius:8px;background:white;padding:4px;box-shadow:0 4px 12px rgba(0,0,0,0.1);margin-top:4px}
+.experience-title{font-size:1.4rem;font-weight:700;color:#2d3748;margin:0;line-height:1.3}
+.experience-company{font-size:1.15rem;font-weight:600;color:#667eea;margin-top:6px}
+.experience-date{font-size:0.95rem;color:#718096;font-weight:600;background:rgba(102,126,234,0.1);padding:6px 14px;border-radius:20px;white-space:nowrap}
+.experience-achievements{margin-top:20px;list-style:none;padding:0}
+.experience-achievements li{color:#4a5568;font-size:0.98rem;line-height:1.8;margin-bottom:12px;position:relative;padding-left:28px}
 .experience-achievements li:last-child{margin-bottom:0}
-.experience-achievements li::before{content:'▸';color:#667eea;font-weight:bold;position:absolute;left:-12px}
+.experience-achievements li::before{content:'✓';color:white;font-weight:bold;position:absolute;left:0;width:20px;height:20px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;top:4px}
 
 /* PROJECTS */
 #projects{background:#f5f7fa;position:relative}
@@ -122,20 +135,56 @@ height:100%;
 
 /* SKILLS */
 #skills{background:linear-gradient(to bottom,#f5f7fa,#ffffff);position:relative}
-.skill-icon{width:80px;height:80px;object-fit:contain;transition:transform 0.3s ease}
-#skills .card{
-border:none;
+.skill-group{
 background:white;
-border-radius:20px;
+border-radius:24px;
+padding:32px;
 box-shadow:0 10px 30px rgba(0,0,0,0.08);
 transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
-padding:20px;
 height:100%;
+position:relative;
+overflow:hidden;
 }
-#skills .card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 20px 40px rgba(118,75,162,0.25)}
-#skills .card:hover .skill-icon{transform:scale(1.15) rotate(5deg)}
-#skills .card-body{padding:25px 15px}
-#skills h5{color:#2d3748;font-weight:600;font-size:1.2rem;margin-top:15px}
+.skill-group::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#667eea,#764ba2)}
+.skill-group:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(102,126,234,0.25)}
+.skill-group-icon{width:60px;height:60px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:20px;box-shadow:0 8px 20px rgba(102,126,234,0.3);transition:transform 0.3s ease}
+.skill-group:hover .skill-group-icon{transform:scale(1.1) rotate(-5deg)}
+.skill-group-title{font-size:1.35rem;font-weight:700;color:#2d3748;margin-bottom:18px}
+.skill-list{list-style:none;padding:0;margin:0}
+.skill-list li{color:#4a5568;font-size:0.95rem;padding:8px 0;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;gap:10px}
+.skill-list li:last-child{border-bottom:none}
+.skill-list li::before{content:'▪';color:#667eea;font-size:20px;font-weight:bold}
+.skill-icons-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));gap:16px;padding:10px 0}
+.skill-icon-item{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px;border-radius:12px;background:#f8f9fa;transition:all 0.3s ease}
+.skill-icon-item:hover{transform:translateY(-5px);background:#667eea;box-shadow:0 8px 20px rgba(102,126,234,0.3)}
+.skill-icon-item img{width:48px;height:48px;object-fit:contain;transition:transform 0.3s ease}
+.skill-icon-item:hover img{transform:scale(1.1)}
+.skill-icon-item span{font-size:0.85rem;font-weight:600;color:#4a5568;transition:color 0.3s ease}
+.skill-icon-item:hover span{color:white}
+.skill-icon-large img{width:72px;height:72px}
+.skill-icon-expandable{cursor:pointer;position:relative}
+.skill-icon-expandable::after{content:'🔍';position:absolute;top:8px;right:8px;font-size:14px;opacity:0;transition:opacity 0.3s ease}
+.skill-icon-expandable:hover::after{opacity:0.7}
+.icon-modal{display:none;position:fixed;z-index:9999;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center}
+.icon-modal.active{display:flex}
+.icon-modal-content{position:relative;max-width:90%;max-height:90%;animation:zoomIn 0.3s ease}
+.icon-modal-content img{width:auto;height:auto;max-width:600px;max-height:600px;object-fit:contain;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.icon-modal-close{position:absolute;top:-40px;right:0;color:white;font-size:35px;font-weight:bold;cursor:pointer;transition:color 0.3s ease}
+.icon-modal-close:hover{color:#667eea}
+@keyframes zoomIn{from{transform:scale(0.5);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* EDUCATION */
+#education{background:white;position:relative}
+.education-card{background:white;border-radius:24px;padding:40px 45px;box-shadow:0 15px 40px rgba(0,0,0,0.1);max-width:800px;margin:0 auto;position:relative;overflow:hidden;transition:all 0.3s ease}
+.education-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,#667eea,#764ba2)}
+.education-card:hover{transform:translateY(-8px);box-shadow:0 25px 50px rgba(102,126,234,0.2)}
+.education-icon{width:100px;height:100px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;box-shadow:0 10px 25px rgba(102,126,234,0.3);font-size:50px}
+.education-degree{font-size:1.6rem;font-weight:700;color:#2d3748;margin-bottom:8px;text-align:center}
+.education-major{font-size:1.2rem;font-weight:600;color:#667eea;margin-bottom:16px;text-align:center}
+.education-school{font-size:1.1rem;color:#4a5568;margin-bottom:8px;text-align:center;font-weight:500;display:flex;align-items:center;justify-content:center;gap:8px}
+.education-school img{width:60px;height:60px;object-fit:contain;border-radius:6px}
+.education-location{font-size:1rem;color:#718096;margin-bottom:12px;text-align:center}
+.education-date{font-size:0.95rem;color:#718096;font-weight:600;background:rgba(102,126,234,0.1);padding:8px 18px;border-radius:20px;display:inline-block;margin-top:8px}
 
 /* CONTACT */
 #contact{background:linear-gradient(135deg,#2d3748 0%,#1a202c 100%);color:white;position:relative;overflow:hidden}
@@ -174,6 +223,7 @@ border:2px solid rgba(255,255,255,0.2);
 <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
 <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
 <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+<li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
 </ul>
 </div>
@@ -202,7 +252,7 @@ border:2px solid rgba(255,255,255,0.2);
 
 <div class="col-lg-8">
 <div class="about-card">
-<h2 class="about-title">AI Engineer & ML Architect</h2>
+<h2 class="about-title">Applied ML Engineer</h2>
 <p class="about-highlight">
 Building production-grade intelligent systems across FinTech, Computer Vision, and Generative AI
 </p>
@@ -231,9 +281,12 @@ Building production-grade intelligent systems across FinTech, Computer Vision, a
 <div class="experience-line"></div>
 <div class="experience-card">
 <div class="experience-header">
+<div class="experience-header-left">
+<img src="images/experience/smarsh.jpg" alt="Smarsh" class="experience-logo">
 <div>
 <h3 class="experience-title">Machine Learning Engineer</h3>
 <p class="experience-company">Smarsh</p>
+</div>
 </div>
 <span class="experience-date">April 2025 - Present</span>
 </div>
@@ -251,9 +304,12 @@ Building production-grade intelligent systems across FinTech, Computer Vision, a
 <div class="experience-line"></div>
 <div class="experience-card">
 <div class="experience-header">
+<div class="experience-header-left">
+<img src="images/experience/juspay.jpeg" alt="JUSPAY" class="experience-logo">
 <div>
 <h3 class="experience-title">Software Development Engineer II</h3>
 <p class="experience-company">JUSPAY</p>
+</div>
 </div>
 <span class="experience-date">May 2023 - March 2025</span>
 </div>
@@ -271,9 +327,12 @@ Building production-grade intelligent systems across FinTech, Computer Vision, a
 <div class="experience-line"></div>
 <div class="experience-card">
 <div class="experience-header">
+<div class="experience-header-left">
+<img src="images/experience/locuz.png" alt="Locuz" class="experience-logo">
 <div>
 <h3 class="experience-title">Solutions Architect - AI</h3>
 <p class="experience-company">Locuz Enterprise Solutions Ltd</p>
+</div>
 </div>
 <span class="experience-date">Sep 2020 - April 2023</span>
 </div>
@@ -290,9 +349,12 @@ Building production-grade intelligent systems across FinTech, Computer Vision, a
 <div class="experience-dot"></div>
 <div class="experience-card">
 <div class="experience-header">
+<div class="experience-header-left">
+<img src="images/experience/nayan.jpeg" alt="Nayan" class="experience-logo">
 <div>
 <h3 class="experience-title">AI Engineer</h3>
 <p class="experience-company">Nayan India Science and Technologies Pvt Ltd</p>
+</div>
 </div>
 <span class="experience-date">June 2019 - August 2020</span>
 </div>
@@ -311,7 +373,7 @@ Building production-grade intelligent systems across FinTech, Computer Vision, a
 <!-- PROJECTS -->
 <section id="projects" class="py-5 text-center">
 <div class="container py-4">
-<h1 class="section-title">Projects</h1>
+<h1 class="section-title">Academic Projects</h1>
 <div class="row g-5">
 
 <div class="col-lg-6 col-md-6">
@@ -361,17 +423,244 @@ Building production-grade intelligent systems across FinTech, Computer Vision, a
 <!-- SKILLS -->
 <section id="skills" class="py-5 text-center">
 <div class="container py-4">
-<h1 class="section-title">Skills</h1>
+<h1 class="section-title">Skills & Technologies</h1>
 <div class="row g-4">
 
-<div class="col-lg-3 col-md-6"><div class="card h-100"><div class="card-body"><img src="images/skills/python.png" class="skill-icon mb-3"><h5>Python</h5></div></div></div>
-<div class="col-lg-3 col-md-6"><div class="card h-100"><div class="card-body"><img src="images/skills/sql.png" class="skill-icon mb-3"><h5>SQL</h5></div></div></div>
-<div class="col-lg-3 col-md-6"><div class="card h-100"><div class="card-body"><img src="images/skills/ml.jpg" class="skill-icon mb-3"><h5>Machine Learning</h5></div></div></div>
-<div class="col-lg-3 col-md-6"><div class="card h-100"><div class="card-body"><img src="images/skills/data_visualization.jpg" class="skill-icon mb-3"><h5>Data Visualization</h5></div></div></div>
+<div class="col-lg-6 col-md-6">
+<div class="skill-group">
+<div class="skill-group-icon">💻</div>
+<h3 class="skill-group-title">Programming Languages</h3>
+<div class="skill-icons-grid">
+<div class="skill-icon-item">
+<img src="images/skills/programming/python.png" alt="Python">
+<span>Python</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/programming/java.png" alt="Java">
+<span>Java</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/programming/kotlin.png" alt="Kotlin">
+<span>Kotlin</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/programming/haskell.png" alt="Haskell">
+<span>Haskell</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/programming/C.png" alt="C">
+<span>C</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/programming/bash.jpeg" alt="Bash">
+<span>Bash</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/programming/nix.png" alt="Nix">
+<span>Nix</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-lg-6 col-md-6">
+<div class="skill-group">
+<div class="skill-group-icon">🤖</div>
+<h3 class="skill-group-title">AI/ML Frameworks</h3>
+<div class="skill-icons-grid">
+<div class="skill-icon-item">
+<img src="images/skills/Frameworks/tf.png" alt="TensorFlow">
+<span>TensorFlow</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/Frameworks/pytorch.jpeg" alt="PyTorch">
+<span>PyTorch</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/Frameworks/langchain.png" alt="LangChain">
+<span>LangChain</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/Frameworks/llamaindex.jpeg" alt="LlamaIndex">
+<span>LlamaIndex</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/Frameworks/keras.png" alt="Keras">
+<span>Keras</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/Frameworks/scikit_learn.png" alt="Scikit-Learn">
+<span>Scikit-Learn</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-lg-6 col-md-6">
+<div class="skill-group">
+<div class="skill-group-icon">📊</div>
+<h3 class="skill-group-title">Data Tools</h3>
+<div class="skill-icons-grid">
+<div class="skill-icon-item">
+<img src="images/skills/data_viz/grafana.jpeg" alt="Grafana">
+<span>Grafana</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/data_viz/prometheus.png" alt="Prometheus">
+<span>Prometheus</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/data_viz/cv.png" alt="OpenCV">
+<span>OpenCV</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/data_viz/matplotlib.jpeg" alt="Matplotlib">
+<span>Matplotlib</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/data_viz/seaborn.png" alt="Seaborn">
+<span>Seaborn</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/data_viz/pandas.png" alt="Pandas">
+<span>Pandas</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/data_viz/np.png" alt="NumPy">
+<span>NumPy</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/data_viz/ckh.png" alt="ClickHouse">
+<span>ClickHouse</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/data_viz/cassandra.png" alt="Cassandra">
+<span>Cassandra</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/data_viz/mongodb.png" alt="MongoDB">
+<span>MongoDB</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-lg-6 col-md-6">
+<div class="skill-group">
+<div class="skill-group-icon">☁️</div>
+<h3 class="skill-group-title">Cloud & DevOps</h3>
+<div class="skill-icons-grid">
+<div class="skill-icon-item skill-icon-large skill-icon-expandable" onclick="openIconModal('images/skills/devops/aws_ai.png', 'AWS AI Services')">
+<img src="images/skills/devops/aws_ai.png" alt="AWS AI Services">
+<span>AWS AI</span>
+</div>
+<div class="skill-icon-item skill-icon-large skill-icon-expandable" onclick="openIconModal('images/skills/devops/aws_services.png', 'AWS Services')">
+<img src="images/skills/devops/aws_services.png" alt="AWS Services">
+<span>AWS</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/devops/bedrock.jpeg" alt="AWS Bedrock">
+<span>Bedrock</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/devops/textract.jpeg" alt="AWS Textract">
+<span>Textract</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/devops/gcp.png" alt="Google Cloud Platform">
+<span>GCP</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/devops/docker.png" alt="Docker">
+<span>Docker</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/devops/k9s.png" alt="Kubernetes">
+<span>Kubernetes</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/devops/kafka.png" alt="Apache Kafka">
+<span>Kafka</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/devops/argo.png" alt="Argo CD">
+<span>Argo CD</span>
+</div>
+<div class="skill-icon-item">
+<img src="images/skills/devops/helm.png" alt="Helm">
+<span>Helm</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-lg-12">
+<div class="skill-group">
+<div class="skill-group-icon">✨</div>
+<h3 class="skill-group-title">Generative AI & LLMs</h3>
+<ul class="skill-list" style="column-count:2;column-gap:30px">
+<li>Large Language Models (GPT-4)</li>
+<li>RAG (Retrieval-Augmented Generation)</li>
+<li>GraphRAG Pipelines</li>
+<li>Transformers & Attention Mechanisms</li>
+</ul>
+</div>
+</div>
 
 </div>
 </div>
 </section>
+
+<!-- EDUCATION -->
+<section id="education" class="py-5">
+<div class="container py-4">
+<h1 class="section-title">Education</h1>
+
+<div class="education-card">
+<div class="education-icon">🎓</div>
+<h3 class="education-degree">Bachelor of Technology</h3>
+<p class="education-major">Computer Science and Engineering</p>
+<p class="education-school"><img src="images/education/iiitg.png" alt="IIIT Guwahati">Indian Institute of Information Technology Guwahati</p>
+<p class="education-location">Guwahati, India</p>
+<div class="text-center">
+<span class="education-date">Graduated: May 2019</span>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- Icon Modal -->
+<div id="iconModal" class="icon-modal" onclick="closeIconModal()">
+<div class="icon-modal-content" onclick="event.stopPropagation()">
+<span class="icon-modal-close" onclick="closeIconModal()">&times;</span>
+<img id="modalImage" src="" alt="">
+</div>
+</div>
+
+<script>
+function openIconModal(imgSrc, altText) {
+  const modal = document.getElementById('iconModal');
+  const modalImg = document.getElementById('modalImage');
+  modal.classList.add('active');
+  modalImg.src = imgSrc;
+  modalImg.alt = altText;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeIconModal() {
+  const modal = document.getElementById('iconModal');
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closeIconModal();
+  }
+});
+</script>
 
 <!-- CONTACT -->
 <section id="contact" class="py-5 text-white text-center">
